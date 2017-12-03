@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HandheldOrdering.Views.LoginPage"
+             Title="Everyware">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="⚙"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout VerticalOptions="FillAndExpand" Margin="16, 0, 16, 80" HorizontalOptions="FillAndExpand">
+        <Label Text="Staff Code" VerticalOptions="Center"/>
+        <Entry VerticalOptions="Center" Keyboard="Numeric"/>
+        <Button Text="Login" VerticalOptions="Center" HorizontalOptions="Center" Command="{Binding LoginCommand}"/>
+    </StackLayout>
+</ContentPage>

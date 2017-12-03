@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs/HandheldOrdering/v15
+/HandheldOrdering/HandheldOrdering/bin/Debug/netstandard2.0
+/HandheldOrdering/HandheldOrdering/obj
+/HandheldOrdering/HandheldOrdering.Android/bin/Debug
+/HandheldOrdering/HandheldOrdering.Android/obj
+/HandheldOrdering/HandheldOrdering.iOS/obj
+/HandheldOrdering/HandheldOrdering.UWP/obj

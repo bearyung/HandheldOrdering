@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:converter="clr-namespace:HandheldOrdering.ValueConverters"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="HandheldOrdering.Views.TableListPage"
+             Title="Table List">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:StringToColorConverter x:Key="StringToColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Search"/>
+        <ToolbarItem Text="Scan"/>
+        <ToolbarItem Text="Logout" Order="Secondary"  Command="{ Binding LogoutCommand }"/>
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <flv:FlowListView 
+            Grid.Row="0"
+            SeparatorVisibility="None" HasUnevenRows="false" FlowColumnMinWidth="70" RowHeight="70"
+	        FlowItemTappedCommand="{Binding TableTappedCommand}" FlowLastTappedItem="{Binding SelectedTable}"
+	        FlowItemsSource="{Binding AvailableTableList}" >
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Grid VerticalOptions="Fill"  HorizontalOptions="Fill">
+                        <BoxView VerticalOptions="Fill" HorizontalOptions="Fill" Margin="2" 
+                             BackgroundColor="{Binding BackgroundColor, Converter={StaticResource StringToColorConverter}}"/>
+                        <Label HorizontalOptions="Fill" VerticalOptions="Fill" 
+                           XAlign="Center" YAlign="Center" 
+                           Text="{Binding TableCode}" FontAttributes="Bold" 
+                           TextColor="{Binding FontColor, Converter={StaticResource StringToColorConverter}}"/>
+                    </Grid>
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
+        <Picker 
+            Grid.Row="1"
+            ItemsSource="{Binding AvailableTableSectionList}" 
+            ItemDisplayBinding="{Binding TableSectionName}"
+            SelectedItem="{Binding SelectedTableSection}"
+            SelectedIndexChanged="OnTableSectionPickerSelectedIndexChanged"
+            />
+    </Grid>    
+</ContentPage>
